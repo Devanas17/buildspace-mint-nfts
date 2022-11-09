@@ -4,7 +4,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { TransactionContext } from "./context/TransactionContext";
 
 // Constants
-const TWITTER_HANDLE = "_buildspace";
+const TWITTER_HANDLE = "_webdevAnas";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const OPENSEA_LINK = "";
 const TOTAL_MINT_COUNT = 50;
@@ -15,6 +15,7 @@ const App = () => {
     currentAccount,
     connectWallet,
     askContractToMintNft,
+    setupEventListener,
   } = useContext(TransactionContext);
 
   // Render Methods
@@ -24,6 +25,15 @@ const App = () => {
       className="cta-button connect-wallet-button"
     >
       Connect to Wallet
+    </button>
+  );
+
+  const renderMintUI = () => (
+    <button
+      onClick={askContractToMintNft}
+      className="cta-button connect-wallet-button"
+    >
+      Mint NFT
     </button>
   );
 
@@ -39,16 +49,9 @@ const App = () => {
           <p className="sub-text">
             Each unique. Each beautiful. Discover your NFT today.
           </p>
-          {currentAccount === "" ? (
-            renderNotConnectedContainer()
-          ) : (
-            <button
-              onClick={askContractToMintNft}
-              className="cta-button connect-wallet-button"
-            >
-              Mint NFT
-            </button>
-          )}
+          {currentAccount === ""
+            ? renderNotConnectedContainer()
+            : renderMintUI()}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />

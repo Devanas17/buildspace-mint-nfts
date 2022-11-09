@@ -1,4 +1,4 @@
-export const contractAddress = "0xd9939fDB31be2724b7C7F87d22b982bE05EB406A";
+export const contractAddress = "0x90a734bBfe8fBa6F33C78AC47f7C54957B2F6634";
 export const contractABI = [
   {
     inputs: [],
@@ -53,6 +53,25 @@ export const contractABI = [
       },
     ],
     name: "ApprovalForAll",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "sender",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "NewEpicNFTMinted",
     type: "event",
   },
   {
@@ -194,6 +213,25 @@ export const contractABI = [
         internalType: "address",
         name: "",
         type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "tokenId",
+        type: "uint256",
+      },
+    ],
+    name: "pickRandomColor",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
       },
     ],
     stateMutability: "view",
